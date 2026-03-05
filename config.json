@@ -1,0 +1,11 @@
+{
+    "target": "114.114.114.114",        # 监测目标（电信DNS）
+    "ping_interval": 60,                 # 每分钟一次
+    "bandwidth_interval": 3600,           # 每小时测速一次
+    "loss_threshold": 8,                  # 丢包率>8%触发路由追踪
+    "delay_threshold": 80,                # 延迟>80ms触发路由追踪
+    "ping_count": 4,                       # 每次发送4个包
+    "timeout": 2,                          # 超时2秒
+    "output_dir": "./network_monitor",
+    "duration": 0
+}
