@@ -56,25 +56,24 @@ sudo apt update && sudo apt install traceroute  # Debian/Ubuntu
 
 > **注意**：ping3需要发送ICMP包，Linux普通用户可能权限不足。建议使用`sudo`运行脚本，或为Python解释器赋予`cap_net_raw`能力：
 > ```bash
-> sudo setcap cap_net_raw+ep $(which python3)
+> sudo setcap cap_net_raw+ep $(./.venv/bin/python3)
 > ```
 
 ---
 
----
 
 ### 使用方法
 
 #### 1. 直接运行（默认配置）
 ```bash
-sudo python3 network_monitor.py
+sudo ./.venv/bin/python3 network_monitor.py &
 ```
 > 默认监测 `114.114.114.114`，每分钟Ping一次，每小时测速一次，输出到 `./network_monitor/` 目录。
 
 #### 2. 自定义参数
 例如：监测 `8.8.8.8`，Ping间隔30秒，带宽测试间隔2小时，丢包率超过5%即触发路由追踪：
 ```bash
-sudo python3 network_monitor.py --target 8.8.8.8 --ping-interval 30 --bandwidth-interval 7200 --loss-threshold 5
+sudo ./.venv/bin/python3 network_monitor.py --target 8.8.8.8 --ping-interval 30 --bandwidth-interval 7200 --loss-threshold 5
 ```
 
 #### 3. 使用配置文件
@@ -94,7 +93,7 @@ sudo python3 network_monitor.py --target 8.8.8.8 --ping-interval 30 --bandwidth-
 ```
 运行：
 ```bash
-sudo python3 network_monitor.py --config-file config.json
+sudo ./.venv/bin/python3 network_monitor.py --config-file config.json
 ```
 
 #### 4. 生成可视化图表
